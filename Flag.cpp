@@ -38,6 +38,13 @@ void Circle(void)
     double x0 = 0, y0 = r, d = 5/4-r;
 
     glClear(GL_COLOR_BUFFER_BIT);
+    glClearColor(0.0, 0.0, 0.0, 1.0);
+    glColor3f(1.0f, 0.0f, 0.0f);
+    glPointSize(4.0);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-200.0, 200.0,-200.0, 200.0);
+
     glBegin(GL_POLYGON);
     for(int i = 0 ; i < R-10 ; i++)
     {
@@ -62,13 +69,6 @@ void Circle(void)
         glVertex2f(y0+x,-x0+y);
         glVertex2f(-x0+x,y0+y);
     }
-
-    glClearColor(0.0, 0.0, 0.0, 1.0);
-    glColor3f(1.0f, 0.0f, 0.0f);
-    glPointSize(4.0);
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(-200.0, 200.0,-200.0, 200.0);
 
     glEnd();
     glFlush();
@@ -105,9 +105,9 @@ int main(int argc, char** argv)
     cout<<"Enter the Radius: ";
     cin>>R;
 
-    //glutDisplayFunc(Rectangle);
+    glutDisplayFunc(Rectangle);
     glutDisplayFunc(Circle);
-    //Rectangle();
+    Rectangle();
     //Circle();
     //myInit();
     glutMainLoop();
