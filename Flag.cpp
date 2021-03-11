@@ -22,10 +22,10 @@ void Rectangle(void)
     glBegin(GL_POLYGON);
     glColor3f(0.0f, 1.0f, 0.0f);
 
-    glVertex2f(-0.1f, 0.0f);
-    glVertex2f(-0.1f, -0.6f);
-    glVertex2f(-0.6f, -0.6f);
-    glVertex2f(-0.6f, 0.0f);
+    glVertex2f(-180.0f, 180.0f);
+    glVertex2f(180.0f, 180.0f);
+    glVertex2f(180.0f, -180.0f);
+    glVertex2f(-180.0f, -180.0f);
 
 	glEnd();
 	glFlush();
@@ -63,7 +63,7 @@ void Circle(void)
         glVertex2f(-x0+x,y0+y);
     }
 
-    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClearColor(0.0, 0.0, 0.0, 1.0);
     glColor3f(1.0f, 0.0f, 0.0f);
     glPointSize(4.0);
     glMatrixMode(GL_PROJECTION);
@@ -90,7 +90,7 @@ void Circle(void)
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
-    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
+    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
     //glutInitWindowSize (640, 480);
     glutInitWindowSize (640, 480);
     //glutInitWindowPosition (100, 150);
@@ -105,10 +105,10 @@ int main(int argc, char** argv)
     cout<<"Enter the Radius: ";
     cin>>R;
 
-    glutDisplayFunc(Rectangle);
+    //glutDisplayFunc(Rectangle);
     glutDisplayFunc(Circle);
-    Rectangle();
-    Circle();
+    //Rectangle();
+    //Circle();
     //myInit();
     glutMainLoop();
 }
