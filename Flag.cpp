@@ -9,8 +9,16 @@ using namespace std;
 
 int R, X1, Y1;
 
-void Square(void)
+void Rectangle(void)
 {
+    glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT);
+	glPointSize(4.0);
+
+	glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-200.0, 200.0,-200.0, 200.0);
+
     glBegin(GL_POLYGON);
     glColor3f(0.0f, 1.0f, 0.0f);
 
@@ -53,14 +61,8 @@ void Circle(void)
         glVertex2f(-y0+x,-x0+y);
         glVertex2f(y0+x,-x0+y);
         glVertex2f(-x0+x,y0+y);
-
     }
-    glEnd();
-    glFlush();
-}
 
-void myInit (void)
-{
     glClearColor(0.0, 0.0, 0.0, 0.0);
     glColor3f(1.0f, 0.0f, 0.0f);
     glPointSize(4.0);
@@ -68,32 +70,46 @@ void myInit (void)
     glLoadIdentity();
     gluOrtho2D(-200.0, 200.0,-200.0, 200.0);
 
-    //gluOrtho2D(-100.0, 640.0,-100.0, 480.0);
-    //gluOrtho2D(0.0, 640.0,0.0, 480.0);
+    glEnd();
+    glFlush();
 }
+
+//void myInit (void)
+//{
+//    glClearColor(0.0, 0.0, 0.0, 0.0);
+//    glColor3f(1.0f, 0.0f, 0.0f);
+//    glPointSize(4.0);
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadIdentity();
+//    gluOrtho2D(-200.0, 200.0,-200.0, 200.0);
+//    //gluOrtho2D(-100.0, 640.0,-100.0, 480.0);
+//    //gluOrtho2D(0.0, 640.0,0.0, 480.0);
+//}
 
 
 int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
-    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB);
+    glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB | GLUT_DEPTH);
     //glutInitWindowSize (640, 480);
     glutInitWindowSize (640, 480);
     //glutInitWindowPosition (100, 150);
     glutInitWindowPosition (100, 150);
     glutCreateWindow ("Bangladesh Flag");
 
-    cout<<"Enter X-Coordinate point: ";
+    cout<<"Enter Circle Mid-point(X): ";
     cin>>X1;
-    cout<<"Enter Y-Coordinate point: ";
+    cout<<"Enter Circle Mid-point point(Y): ";
     cin>>Y1;
 
     cout<<"Enter the Radius: ";
     cin>>R;
 
-    glutDisplayFunc(Square);
+    glutDisplayFunc(Rectangle);
     glutDisplayFunc(Circle);
-    myInit ();
+    Rectangle();
+    Circle();
+    //myInit();
     glutMainLoop();
 }
 
