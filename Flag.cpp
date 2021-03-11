@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int R = 60, X1 = 135, Y1 = 90;
+int R = 50, X1 = 135, Y1 = 90;
 
 void Rectangle(void)
 {
@@ -17,11 +17,10 @@ void Rectangle(void)
 
 	glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    //gluOrtho2D(-200.0, 200.0,-200.0, 200.0);
     gluOrtho2D(0.0, 300.0,0.0, 180.0);
 
     glBegin(GL_POLYGON);
-    glColor3f(0.0f, 0.4f, 0.0f);
+    glColor3f(0.0f, 0.3f, 0.0f);
 
     glVertex2f(0.0f, 0.0f);
     glVertex2f(300.0f, 0.0f);
